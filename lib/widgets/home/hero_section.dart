@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/app_theme.dart';
+import '../../screens/order/cover_type_screen.dart';
 
 class HeroSection extends StatefulWidget {
   const HeroSection({Key? key}) : super(key: key);
@@ -128,7 +129,12 @@ class _HeroSectionState extends State<HeroSection> {
                     onTapUp: (_) => setState(() => _isPressed = false),
                     onTapCancel: () => setState(() => _isPressed = false),
                     onTap: () {
-                      // TODO: navigate to creation flow
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const CoverTypeScreen(),
+                        ),
+                      );
                     },
                     child: Container(
                       height: 48,

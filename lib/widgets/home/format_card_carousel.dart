@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/app_theme.dart';
+import '../../screens/order/cover_type_screen.dart';
 import 'section_header.dart';
 
 class FormatCardCarousel extends StatelessWidget {
@@ -7,6 +8,7 @@ class FormatCardCarousel extends StatelessWidget {
 
   static final _formats = [
     _FormatData(
+      coverType: 'soft',
       name: 'Мягкая обложка',
       image: 'assets/images/home/formats/soft.png',
       price: 'от 1499₽',
@@ -18,6 +20,7 @@ class FormatCardCarousel extends StatelessWidget {
       tags: const ['Дети', 'Семья', 'Без повода'],
     ),
     _FormatData(
+      coverType: 'hard',
       name: 'Твёрдая обложка',
       image: 'assets/images/home/formats/hard.png',
       price: 'от 1999₽',
@@ -29,6 +32,7 @@ class FormatCardCarousel extends StatelessWidget {
       tags: const ['Путешествие', 'Книга года', 'День рождения'],
     ),
     _FormatData(
+      coverType: 'layflat',
       name: 'Layflat',
       image: 'assets/images/home/formats/layflat.png',
       price: 'от 3499₽',
@@ -87,7 +91,12 @@ class _FormatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO: navigate to format detail
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CoverTypeScreen(initialType: format.coverType),
+          ),
+        );
       },
       child: Container(
         width: cardWidth,
@@ -97,7 +106,7 @@ class _FormatCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            _buildImageSection(),
+            _buildImageSection(context),
             Expanded(child: _buildTextSection()),
           ],
         ),
@@ -105,7 +114,7 @@ class _FormatCard extends StatelessWidget {
     );
   }
 
-  Widget _buildImageSection() {
+  Widget _buildImageSection(BuildContext context) {
     return SizedBox(
       width: 140,
       child: Stack(
@@ -176,7 +185,12 @@ class _FormatCard extends StatelessWidget {
             right: 8,
             child: GestureDetector(
               onTap: () {
-                // TODO: open details
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => CoverTypeScreen(initialType: format.coverType),
+                  ),
+                );
               },
               child: const Text(
                 'подробнее',
@@ -256,6 +270,7 @@ class _FormatCard extends StatelessWidget {
 }
 
 class _FormatData {
+  final String coverType;
   final String name;
   final String image;
   final String price;
@@ -267,6 +282,7 @@ class _FormatData {
   final List<String> tags;
 
   const _FormatData({
+    required this.coverType,
     required this.name,
     required this.image,
     required this.price,

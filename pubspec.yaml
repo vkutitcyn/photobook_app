@@ -41,6 +41,9 @@ dependencies:
   # Работа с путями файлов
   path_provider: ^2.1.2
   
+  # Доступ к галерее фото
+  photo_manager: ^3.6.0
+  
   # Красивые иконки
   cupertino_icons: ^1.0.6
 dev_dependencies:
@@ -72,6 +75,10 @@ flutter:
     - assets/images/home/categories/
     - assets/images/home/books/
     - assets/images/home/formats/
+    - assets/images/book_params/
+    - assets/images/book_params/covers/
+    - assets/images/book_params/preview/
+    - assets/images/book_params/options/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
